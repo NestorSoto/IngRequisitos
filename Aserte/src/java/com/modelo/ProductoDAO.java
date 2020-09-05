@@ -17,26 +17,24 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author User
- */
+
 public class ProductoDAO {
     Connection con;
     Conexion cn=new Conexion();
     PreparedStatement ps;
     ResultSet rs;
     public Producto listarId(int id){
-        String sql="select * from producto where idProducto="+id;
+        String as="SELECT idProducto,Nombres,Foto,Descripcion,Precio,Stock FROM producto WHERE idProducto = '" + id + "'";
+        String sql="select * from producto where idProducto"+ id;
         Producto p= new Producto();
         try{
             con = cn.getConection();
-            ps= con.prepareStatement(sql);
+            ps= con.prepareStatement(as);
             rs=ps.executeQuery();
             while(rs.next())
                 p.setId(rs.getInt(1));
                 p.setNombres(rs.getString(2));
-                p.setFoto(rs.getBinaryStream(3));
+                p.setFoto(rs.getString(3));
                 p.setDescripcion(rs.getString(4));
                 p.setPrecio(rs.getDouble(5));
                 p.setStock(rs.getInt(6));
@@ -48,6 +46,7 @@ public class ProductoDAO {
     }
     public List listar(){
         List<Producto> productos=new ArrayList();
+        
         String sql="select * from producto";
         try{
             con=cn.getConection();
@@ -57,7 +56,7 @@ public class ProductoDAO {
                 Producto p= new Producto();
                 p.setId(rs.getInt(1));
                 p.setNombres(rs.getString(2));
-                p.setFoto(rs.getBinaryStream(3));
+                p.setFoto(rs.getString(3));
                 p.setDescripcion(rs.getString(4));
                 p.setPrecio(rs.getDouble(5));
                 p.setStock(rs.getInt(6));
@@ -69,6 +68,7 @@ public class ProductoDAO {
         return productos;
     }
     public void listarImg(int id, HttpServletResponse response){
+        String as="SELECT idProducto FROM producto WHERE idProducto = '" + id + "'";
         String sql="select * from producto where idProducto"+ id;
         InputStream inputStream=null;
         OutputStream outputStream=null;

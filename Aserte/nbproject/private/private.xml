@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/controlador/Controlador.java</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/carrito.jsp</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modelo/Producto.java</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modelo/Carrito.java</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/index.jsp</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modelo/ProductoDAO.java</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/controlador/ControladorIMG.java</file>
         </group>
     </open-files>
 </project-private>
