@@ -5,9 +5,12 @@
  */
 package com.controlador;
 
+import com.config.Fecha;
 import com.modelo.Carrito;
+import com.modelo.Pago;
 import com.modelo.Producto;
 import com.modelo.ProductoDAO;
+import com.modeloDAO.CompraDAO;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,63 +21,65 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import view.Compra;
+import view.Usuario;
 
 public class Controlador extends HttpServlet {
 
     ProductoDAO pdao = new ProductoDAO();
     Producto p = new Producto();
-    int item;
-    double totalPagar = 0.0;
-    int cantidad = 1;
-
+    private int item;
+    private double totalPagar = 0.0;
+    private int cantidad = 1;
+    Carrito car;
     List<Producto> productos = new ArrayList<>();
     List<Carrito> listaCarrito = new ArrayList<>();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String accion = request.getParameter("accion");
         productos = pdao.listar();
         HttpSession session = request.getSession();
         switch (accion) {
             case "AgregarCarrito":
                 int pos = 0;
-                int cantidad = 1;
+
                 int idp = Integer.parseInt(request.getParameter("id"));
                 p = pdao.listarId(idp);
                 if (listaCarrito.size() > 0) {
-                    for(int i =0;i<listaCarrito.size();i++){
-                        if(idp==listaCarrito.get(i).getCantidad()){
-                            pos=i;
+                    for (int i = 0; i < listaCarrito.size(); i++) {
+                        if (idp == listaCarrito.get(i).getCantidad()) {
+                            pos = i;
                         }
-                        
+                        session.setAttribute("indice", pos);
                     }
-                    if(idp==listaCarrito.get(pos).getIdProducto()){
-                        cantidad=listaCarrito.get(pos).getCantidad()+cantidad;
-                        double subtotal=listaCarrito.get(pos).getPrecioCompra()*cantidad;
+                    if (idp == listaCarrito.get(pos).getIdProducto()) {
+                        cantidad = listaCarrito.get(pos).getCantidad() + cantidad;
+                        double subtotal = listaCarrito.get(pos).getPrecioCompra() * cantidad;
                         listaCarrito.get(pos).setCantidad(cantidad);
-                        
                         listaCarrito.get(pos).setSubTotal(subtotal);
-                    }else{
+                    } else {
                         item = item + 1;
-                    Carrito car = new Carrito();
-                    car.setItem(item);
-                    car.setIdProducto(p.getId());
+                        car = new Carrito();
+                        car.setItem(item);
+                        car.setIdProducto(p.getId());
 
-                    car.setNombres(pdao.listarId(idp).getNombres());
-                    car.setDescripcion(p.getDescripcion());
-                    car.setPrecioCompra(p.getPrecio());
-                    car.setCantidad(cantidad);
-                    car.setSubTotal(cantidad * p.getPrecio());
-                    listaCarrito.add(car);
+                        car.setNombres(pdao.listarId(idp).getNombres());
+                        car.setDescripcion(p.getDescripcion());
+                        car.setPrecioCompra(p.getPrecio());
+                        car.setCantidad(cantidad);
+                        car.setSubTotal(cantidad * p.getPrecio());
+                        listaCarrito.add(car);
                     }
 
                 } else {
                     item = item + 1;
-                    Carrito car = new Carrito();
+                    car = new Carrito();
                     car.setItem(item);
                     car.setIdProducto(p.getId());
 
-                    car.setNombres(pdao.listarId(idp).getNombres());
+                    car.setNombres(p.getNombres());
                     car.setDescripcion(p.getDescripcion());
                     car.setPrecioCompra(p.getPrecio());
                     car.setCantidad(cantidad);
@@ -88,6 +93,20 @@ public class Controlador extends HttpServlet {
 
                 break;
 
+            case "GenerarCompra":
+                Usuario cliente = new Usuario();
+                Pago pago = new Pago();
+                CompraDAO dao = new CompraDAO();
+                Compra compra = new Compra(1, 1, Fecha.FechaBD(), totalPagar, "cancelado", listaCarrito);
+                int res = dao.GenerarCompra(compra);
+                if (res != 0 && totalPagar > 0) {
+                    request.getRequestDispatcher("vistas/mensaje.jsp").forward(request, response);
+
+                } else {
+                    request.getRequestDispatcher("vistas/error.jsp").forward(request, response);
+                }
+
+                break;
             case "Delete":
                 int idproducto = Integer.parseInt(request.getParameter("idp"));
                 for (int i = 0; i < listaCarrito.size(); i++) {

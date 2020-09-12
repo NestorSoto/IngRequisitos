@@ -60,32 +60,32 @@
             </div>
         </nav>
         <div class="container col-4 margin-1">
-            
-               
+
+
             <form>
                 <h3>Registro Empresa</h3>
-                    <hr>
+                <hr>
                 <div class="form-group">
                     <label for="inputNombreEmpresa"><i class="fas fa-building"></i>Nombre de Empresa</label>
                     <input type="text" class="form-control" name="nombreEmpresa" id="inputNombreEmpresa" placeholder="Nombre de empresa">
                 </div>
-                    <div class="form-group">
+                <div class="form-group">
                     <label for="inputTitular"><i class="fas fa-user-tie"></i>Titular de Empresa</label>
                     <input type="text" class="form-control" name="titularE" id="inputTitular" placeholder="Titular de empresa">
                 </div>
-                    <div class="form-group">
+                <div class="form-group">
                     <label for="inputDireccion"><i class="fas fa-map-marked-alt"></i>Direccion</label>
                     <input type="text" class="form-control" name="dir" id="inputAddress" placeholder="DIRECCION">
                 </div>
-                    <div class="form-group">
+                <div class="form-group">
                     <label for="inputRuc">RUC</label>
                     <input type="text" class="form-control" name="Ruc" id="inputRuc" placeholder="RUC">
                 </div>
-                    <div class="form-group">
+                <div class="form-group">
                     <label for="inputRubro"><i class="fas fa-layer-group"></i>Rubro</label>
                     <input type="text" class="form-control" name="rubro1" id="inputNombreRubro" placeholder="Rubro">
                 </div>
-                    
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail"><i class="fas fa-envelope"></i>Email</label>
@@ -96,44 +96,47 @@
                         <input type="password" class="form-control" name="contra" id="inputPassword4">
                     </div>
                 </div>
-                
-                
-                
+
+
+
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Acepto los<a href="#">Terminos y condiciones</a></label>
+                    <label class="form-check-label" for="exampleCheck1">Acepto los<a href="terminos.jsp">Terminos y condiciones</a></label>
                 </div>
 
 
 
-                    <input type="submit" name="btnRegistrar" class="btn btn-success" value="Registrarse" id="button">
-                    <input type="submit" name="btn" class="btn btn-danger" value="Soy Persona naltural" id="button">
+                <input type="submit" name="btnRegistrar" class="btn btn-success" value="Registrarse" id="button">
+                <input type="submit" name="btn" class="btn btn-danger" value="Soy Persona naltural" id="button">
             </form>
-            
-           
+
+
         </div>
-            <% 
-            String nombreEmpresa, titular,direccion,rubro , contra, email;
+        <%
+            String nombreEmpresa, titular, direccion, rubro, contra, email;
             int ruc;
-            if(request.getParameter("btnRegistrar")!=null){
-                nombreEmpresa= request.getParameter("nombreEmpresa");
-                titular=request.getParameter("titularE");
-                direccion=request.getParameter("dir");
-                ruc=Integer.parseInt(request.getParameter("Ruc"));
-                rubro=request.getParameter("rubro1");
-                email=request.getParameter("correo");
-                contra=request.getParameter("contra");
-                Usuario us=new Usuario(1,nombreEmpresa,email,titular,contra,direccion,ruc,rubro,1);
-                if (UsuarioCad.Registrar(us)) {
+            if (request.getParameter("btnRegistrar") != null) {
+                nombreEmpresa = request.getParameter("nombreEmpresa");
+                titular = request.getParameter("titularE");
+                direccion = request.getParameter("dir");               
+                rubro = request.getParameter("rubro1");
+                email = request.getParameter("correo");
+                contra = request.getParameter("contra");
+                if (!nombreEmpresa.equals("") && !titular.equals("") && !direccion.equals("") &&!request.getParameter("Ruc").equals("")&&!rubro.equals("")&&!email.equals("")&&!contra.equals("")) {
+                     ruc = Integer.parseInt(request.getParameter("Ruc"));
+                    Usuario us = new Usuario(1, nombreEmpresa, email, titular, contra, direccion, ruc, rubro, 1);
+                    if (UsuarioCad.Registrar(us)) {
                         HttpSession sesion = request.getSession();
-                        sesion.setAttribute("user", us.getIdusiario()+us.getIdusiario());
-                        
+                        sesion.setAttribute("user", us.getUsuario());
+
                         sesion.setAttribute("userEmail", email);
 
                         response.sendRedirect("index.jsp");
-                        }
-                    } //else {
-        %>
+                    }
+                }
+
+            } //else {
+%>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

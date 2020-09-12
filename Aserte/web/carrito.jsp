@@ -49,17 +49,41 @@
                             Cuenta
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            
+                            
+                            <% if (session.getAttribute("user") == null) {
+                                } 
+                            else {
+                            %>
+                            <a class="dropdown-item" href="administracion.jsp"><i class="fas fa-user-edit"></i>${user}</a>
+                            <a class="dropdown-item" href="CerrarSesion.jsp"><i class="fas fa-sign-out-alt"></i>Cerrar Session</a>
+                            
+                            <%
+                                    }
+                            %>
+                            
+                            <% if (session.getAttribute("user") != null) {
+                                } 
+                            else {
+                            %>
+                            </a>
                             <a class="dropdown-item" href="inicioSesion.jsp">Iniciar Sesion</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            
+                            <%
+                                    }
+                            %>
+                            
+                           
+                            
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="Controlador?accion=Carrito">Ver Carrito</a>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="container mt-4 ">
-            <h4>Carrito</h4>
+            <h4>Carrito ${indice}</h4>
             <br>
             <div class="row">
                 <div class="col-sm-8">
@@ -112,7 +136,7 @@
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-info btn-block">Realizar Pago</a>
-                            <a href="#" class="btn btn-danger btn-block">Generar compra</a>
+                            <a href="Controlador?accion=GenerarCompra" class="btn btn-danger btn-block">Generar compra</a>
 
                         </div>
                     </div>

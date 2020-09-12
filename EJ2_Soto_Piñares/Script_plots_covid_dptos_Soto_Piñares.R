@@ -1,17 +1,8 @@
-#' ---
-#' title: "antapaccay_glm_corona.r"
-#' author: "Ernesto Cancho-Rodriguez"
-#' date: "2 de Setiembre 2020"
-#' ---
 
-#################################################
-# Scripts de R para reproducir los analisis 
-#################################################
-
-# INICIO CODIGO DE PRUEBA
 library(readr)
+library(ggplot2)
 #file.choose()
-
+9
 
 # INICIO
 lugar="P1DPTO03APURIMAC"

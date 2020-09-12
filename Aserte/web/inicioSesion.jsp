@@ -91,7 +91,7 @@
                 if(UsuarioCad.usuarioExiste(nombre, contra)){
                     cliente = UsuarioCad.obtenerUsuario(nombre);
                     sesion.setAttribute("user", cliente.getUsuario());
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("Controlador?accion=home");
                 }else{
                     out.print(" el usuario no existe");
                 }
