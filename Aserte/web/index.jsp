@@ -52,8 +52,8 @@
                                 <% if (session.getAttribute("user") == null) {
                                     } else {
                                 %>
-                                <a class="dropdown-item" href="administracion.jsp"><i class="fas fa-user-edit"></i>${user}</a>
-                                <a class="dropdown-item" href="CerrarSesion.jsp"><i class="fas fa-sign-out-alt"></i>Cerrar Session</a>
+                                <a class="dropdown-item" href="administracion.jsp"><i class="fas fa-user-edit"></i> ${user}</a>
+                                <a class="dropdown-item" href="CerrarSesion.jsp"><i class="fas fa-sign-out-alt"></i> Cerrar Session</a>
 
                                 <%
                                     }
@@ -63,7 +63,7 @@
                                     } else {
                                 %>
                                 </a>
-                                <a class="dropdown-item" href="inicioSesion.jsp">Iniciar Sesion</a>
+                                <a class="dropdown-item" href="inicioSesion.jsp"> Iniciar Sesion</a>
 
                                 <%
                                     }
@@ -72,20 +72,57 @@
 
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="Controlador?accion=Carrito">Ver Carrito</a>
+                                <a class="dropdown-item" href="Controlador?accion=Carrito"> Ver Carrito</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <img src="https://bit.ly/3gGbS5C" class="img-fluid" alt="Responsive image">
+        
+        <section id="slider"><!--slider-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#slider-carousel" data-slide-to="1"></li>
+                                <li data-target="#slider-carousel" data-slide-to="2"></li>
+                            </ol>
+
+                            <div class="carousel-inner">
+                                <div class="item active">                            
+                                    <img src="img/banner.jpg" class="girl img-responsive" alt="" width="1230" height="400"/>                            
+                                </div>
+                                <div class="item">
+                                    <img src="imag/banner.jpg" class="girl img-responsive" alt="" />          
+                                </div>
+
+                                <div class="item">
+                                    <img src="imag/portadav3.jpg" class="girl img-responsive" alt="" />          
+                                </div>
+
+                            </div>
+
+                            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!--/slider-->
 
 
-        <div class="col-md-8 offset-md-3">
+        <div class="container">
             <div class="row">
                 <c:forEach var="p" items="${productos}">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" >
                         <div class="card">
                             <div class="card-header">
                                 <label>${p.getNombres()}</label>
@@ -107,12 +144,12 @@
                     </div>
 
                 </c:forEach>
-                <h3>${indice}</h3>
+
 
             </div>
         </div>
 
-
+        <link href="cssLocal/slider.css" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

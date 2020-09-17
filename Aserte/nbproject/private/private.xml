@@ -4,18 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/vistas/error.jsp</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modeloDAO/CompraDAO.java</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/view/Compra.java</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/cssLocal/slider.css</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/vistas/mensaje.jsp</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modelo/Producto.java</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/inicioSesion.jsp</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/index.jsp</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/cad/UsuarioCad.java</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/config/Fecha.java</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/controlador/Controlador.java</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modelo/Pago.java</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/carrito.jsp</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/img/hero.jpg</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/iniciof.jsp</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/product.jsp</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/administracion.jsp</file>
             <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/vistas/compras.jsp</file>
-            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/cssLocal/style.css</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/registro.jsp</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/src/java/com/modelo/ProductoDAO.java</file>
+            <file>file:/C:/Users/User/OneDrive/Documentos/NetBeansProjects/Aserte/web/js/funciones.js</file>
         </group>
     </open-files>
 </project-private>

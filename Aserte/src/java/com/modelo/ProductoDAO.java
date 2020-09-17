@@ -5,6 +5,7 @@
  */
 package com.modelo;
 
+import static cad.UsuarioCad.nombreUsuario;
 import com.config.Conexion;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -16,8 +17,29 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class ProductoDAO {
+    public static void add(String nombre, String foto, String Descripcion, int precio, int Stock){
+        String sql="INSERT INTO `producto`(`Nombres`, `Foto`, `Descripcion`, `Precio`, `Stock`) VALUES (?,?,?,?,?)";
+            
+            try{
+                Connection con;
+                Conexion cn =new Conexion();
+                PreparedStatement ps;
+                ResultSet rs;
+                con=cn.getConection();
+                ps=con.prepareStatement(sql);
+                ps.setString(1,nombre);
+                ps.setString(2, foto);
+                ps.setString(3, Descripcion);
+                ps.setInt(4, precio);
+                ps.setInt(5, Stock);
+                ps.executeUpdate();
+            }catch(Exception e){
+                
+            }
+    }
 
     public Producto listarId2(int id) {
         String as = "SELECT idProducto,Nombres,Foto,Descripcion,Precio,Stock FROM producto WHERE idProducto = '" + id + "'";

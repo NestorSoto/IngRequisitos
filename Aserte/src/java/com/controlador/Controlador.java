@@ -92,7 +92,15 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("Controlador?accion=home").forward(request, response);//sirve para redireccionar Controlador?accion=Carrito
 
                 break;
-
+                
+            case "Pagar":
+                //int idro=Integer.parseInt(request.getParameter("idp"));
+                for(int i=0;i<listaCarrito.size();i++){
+                    listaCarrito.remove(i);
+                }
+                session.setAttribute("contador", listaCarrito.size());
+                request.getRequestDispatcher("Controlador?accion=home").forward(request, response);
+                break;
             case "GenerarCompra":
                 Usuario cliente = new Usuario();
                 Pago pago = new Pago();
